@@ -1,7 +1,11 @@
-from myapp.main import main
+from fastapi.testclient import TestClient
+
+from myapp.main import app
+
+client = TestClient(app)
 
 
-def test_main(capsys: object) -> None:
-    main()
-    captured = capsys.readouterr()  # type: ignore[union-attr]
-    assert captured.out == "Hello, world!\n"
+def test_health() -> None:
+    response = client.get("/health/")
+    assert response.status_code == 200
+    assert response.json() == {"status": "ok"}

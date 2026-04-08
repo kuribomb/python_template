@@ -20,3 +20,11 @@ echo.
 echo Setup complete!
 echo To activate the venv in a new terminal, run:
 echo   .venv\Scripts\activate.bat
+echo.
+echo Frontend setup (requires Node.js):
+echo   cd frontend
+echo   npm install
+echo.
+echo To start development (2 terminals):
+echo   Backend:  uvicorn myapp.main:app --reload
+echo   Frontend: cd frontend ^&^& npm run dev

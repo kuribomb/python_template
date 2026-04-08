@@ -1,21 +1,54 @@
-# python_template
+# python_template — Svelte フルスタック
 
-小規模ツールをサクッと作れるリポジトリテンプレート
+FastAPI バックエンド + SvelteKit フロントエンドの構成テンプレート。
+
+ベーステンプレート: `python-base` ブランチ
 
 ## 構成
 
+### バックエンド（Python）
+
 - Python 3.12
+- [FastAPI](https://fastapi.tiangolo.com/) — Web フレームワーク
+- [uvicorn](https://www.uvicorn.org/) — ASGI サーバー
+- [httpx](https://www.python-httpx.org/) — テスト用 HTTP クライアント
 - [Black](https://black.readthedocs.io/) — コードフォーマッター
 - [Ruff](https://docs.astral.sh/ruff/) — Linter / import整理
-- [Pylance](https://marketplace.visualstudio.com/items?itemName=ms-python.pylance) — 型チェック (standard)
 - [pytest](https://docs.pytest.org/) — テスト
 - src-layout (`src/myapp/`)
+
+### フロントエンド（SvelteKit）
+
+- [SvelteKit](https://kit.svelte.dev/) — フルスタックフレームワーク
+- TypeScript
+- Vite
+
+### ディレクトリ構成
+
+```
+src/myapp/          # Python API バックエンド
+├── main.py         # FastAPI アプリ（CORS設定あり）
+├── routers/        # APIRouter ごとにファイルを分割
+└── models/         # Pydantic モデル
+frontend/           # SvelteKit フロントエンド
+├── src/
+│   ├── lib/api.ts  # バックエンド API クライアント
+│   └── routes/     # ページコンポーネント
+└── package.json
+```
 
 ## セットアップ
 
 ### 1. テンプレートから新しいリポジトリを作成
 
-GitHub の "Use this template" からリポジトリを作成する。
+```bat
+git clone --branch python/svelte --single-branch https://github.com/kuribomb/python_template.git my-project
+cd my-project
+rmdir /s /q .git
+git init
+git add .
+git commit -m "Initial commit"
+```
 
 ### 2. 環境構築（Windows）
 
@@ -49,18 +82,28 @@ code .
 ## よく使うコマンド
 
 ```bat
-# Lint
+rem バックエンド開発サーバー（ターミナル1）
+uvicorn myapp.main:app --reload
+
+rem フロントエンド開発サーバー（ターミナル2）
+cd frontend
+npm run dev
+
+rem Lint
 ruff check src/ tests/
 
-# Format
+rem Format
 black src/ tests/
 
-# Lint + import整理（自動修正）
+rem Lint + import整理（自動修正）
 ruff check --fix src/ tests/
 
-# テスト
+rem テスト
 pytest tests/ -v
 ```
+
+バックエンド: `http://localhost:8000/docs`
+フロントエンド: `http://localhost:5173`
 
 ## 環境変数
 
