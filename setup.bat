@@ -20,3 +20,10 @@ echo.
 echo Setup complete!
 echo To activate the venv in a new terminal, run:
 echo   .venv\Scripts\activate.bat
+echo.
+echo To run the app:
+echo   python -m myapp.main
+echo.
+echo To run tests (headless):
+echo   set QT_QPA_PLATFORM=offscreen
+echo   pytest tests/ -v

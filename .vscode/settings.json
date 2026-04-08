@@ -12,5 +12,6 @@
   "python.analysis.autoImportCompletions": true,
   "python.defaultInterpreterPath": "${workspaceFolder}/.venv/Scripts/python.exe",
   "ruff.enable": true,
-  "ruff.lint.enable": true
+  "ruff.lint.enable": true,
+  "qtForPython.virtualEnvironmentLocation": "${workspaceFolder}/.venv"
 }

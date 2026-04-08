@@ -1,5 +1,15 @@
+import sys
+
+from PySide6.QtWidgets import QApplication
+
+from myapp.ui.main_window import MainWindow
+
+
 def main() -> None:
-    print("Hello, world!")
+    app = QApplication(sys.argv)
+    window = MainWindow()
+    window.show()
+    sys.exit(app.exec())
 
 
 if __name__ == "__main__":

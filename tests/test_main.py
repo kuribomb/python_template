@@ -1,7 +1,7 @@
-from myapp.main import main
+from myapp.ui.main_window import MainWindow
 
 
-def test_main(capsys: object) -> None:
-    main()
-    captured = capsys.readouterr()  # type: ignore[union-attr]
-    assert captured.out == "Hello, world!\n"
+def test_window_title(qtbot: object) -> None:
+    window = MainWindow()
+    qtbot.addWidget(window)  # type: ignore[union-attr]
+    assert window.windowTitle() == "myapp"

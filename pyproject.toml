@@ -2,10 +2,12 @@
 name = "myapp"
 version = "0.1.0"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "PySide6>=6.7",
+]
 
 [project.optional-dependencies]
-dev = ["black", "ruff", "pytest"]
+dev = ["black", "ruff", "pytest", "pytest-qt"]
 
 [tool.setuptools.packages.find]
 where = ["src"]

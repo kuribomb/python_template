@@ -1,21 +1,40 @@
-# python_template
+# python_template — PySide6
 
-小規模ツールをサクッと作れるリポジトリテンプレート
+PySide6 を使ったデスクトップアプリ開発用テンプレート。
+
+ベーステンプレート: `python-base` ブランチ
 
 ## 構成
 
 - Python 3.12
+- [PySide6](https://doc.qt.io/qtforpython/) — Qt6 Python バインディング
+- [pytest-qt](https://pytest-qt.readthedocs.io/) — Qt ウィジェットのテスト
 - [Black](https://black.readthedocs.io/) — コードフォーマッター
 - [Ruff](https://docs.astral.sh/ruff/) — Linter / import整理
 - [Pylance](https://marketplace.visualstudio.com/items?itemName=ms-python.pylance) — 型チェック (standard)
-- [pytest](https://docs.pytest.org/) — テスト
 - src-layout (`src/myapp/`)
+
+### ディレクトリ構成
+
+```
+src/myapp/
+├── main.py             # QApplication エントリポイント
+└── ui/
+    └── main_window.py  # QMainWindow サブクラス
+```
 
 ## セットアップ
 
 ### 1. テンプレートから新しいリポジトリを作成
 
-GitHub の "Use this template" からリポジトリを作成する。
+```bat
+git clone --branch python/pyside6 --single-branch https://github.com/kuribomb/python_template.git my-project
+cd my-project
+rmdir /s /q .git
+git init
+git add .
+git commit -m "Initial commit"
+```
 
 ### 2. 環境構築（Windows）
 
@@ -49,17 +68,21 @@ code .
 ## よく使うコマンド
 
 ```bat
-# Lint
+rem アプリ起動
+python -m myapp.main
+
+rem テスト（ヘッドレス）
+set QT_QPA_PLATFORM=offscreen
+pytest tests/ -v
+
+rem Lint
 ruff check src/ tests/
 
-# Format
+rem Format
 black src/ tests/
 
-# Lint + import整理（自動修正）
+rem Lint + import整理（自動修正）
 ruff check --fix src/ tests/
-
-# テスト
-pytest tests/ -v
 ```
 
 ## 環境変数
