@@ -20,3 +20,8 @@ echo.
 echo Setup complete!
 echo To activate the venv in a new terminal, run:
 echo   .venv\Scripts\activate.bat
+echo.
+echo To start the development server:
+echo   uvicorn myapp.main:app --reload
+echo.
+echo API docs available at http://localhost:8000/docs

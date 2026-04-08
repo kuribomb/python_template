@@ -2,10 +2,13 @@
 name = "myapp"
 version = "0.1.0"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.30",
+]
 
 [project.optional-dependencies]
-dev = ["black", "ruff", "pytest"]
+dev = ["black", "ruff", "pytest", "httpx"]
 
 [tool.setuptools.packages.find]
 where = ["src"]

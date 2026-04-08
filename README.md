@@ -1,21 +1,42 @@
-# python_template
+# python_template — FastAPI
 
-小規模ツールをサクッと作れるリポジトリテンプレート
+FastAPI を使った Web API 開発用テンプレート。
+
+ベーステンプレート: `python-base` ブランチ
 
 ## 構成
 
 - Python 3.12
+- [FastAPI](https://fastapi.tiangolo.com/) — Web フレームワーク
+- [uvicorn](https://www.uvicorn.org/) — ASGI サーバー
+- [httpx](https://www.python-httpx.org/) — テスト用 HTTP クライアント
 - [Black](https://black.readthedocs.io/) — コードフォーマッター
 - [Ruff](https://docs.astral.sh/ruff/) — Linter / import整理
 - [Pylance](https://marketplace.visualstudio.com/items?itemName=ms-python.pylance) — 型チェック (standard)
 - [pytest](https://docs.pytest.org/) — テスト
 - src-layout (`src/myapp/`)
 
+### ディレクトリ構成
+
+```
+src/myapp/
+├── main.py          # FastAPI アプリ本体
+├── routers/         # APIRouter ごとにファイルを分割
+└── models/          # Pydantic モデル（リクエスト/レスポンス）
+```
+
 ## セットアップ
 
 ### 1. テンプレートから新しいリポジトリを作成
 
-GitHub の "Use this template" からリポジトリを作成する。
+```bat
+git clone --branch python/fastapi --single-branch https://github.com/kuribomb/python_template.git my-project
+cd my-project
+rmdir /s /q .git
+git init
+git add .
+git commit -m "Initial commit"
+```
 
 ### 2. 環境構築（Windows）
 
@@ -49,6 +70,9 @@ code .
 ## よく使うコマンド
 
 ```bat
+# 開発サーバー起動
+uvicorn myapp.main:app --reload
+
 # Lint
 ruff check src/ tests/
 
