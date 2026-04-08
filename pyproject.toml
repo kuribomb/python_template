@@ -24,3 +24,6 @@ ignore = []
 
 [tool.ruff.lint.isort]
 known-first-party = ["myapp"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
