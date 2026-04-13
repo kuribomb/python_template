@@ -15,14 +15,14 @@ REM set HTTPS_PROXY=http://proxy.example.com:8080
 REM set NO_PROXY=localhost,127.0.0.1
 
 echo Upgrading pip...
-python -m pip install --upgrade pip
+.venv\Scripts\python.exe -m pip install --upgrade pip
 if errorlevel 1 (
     echo ERROR: Failed to upgrade pip.
     exit /b 1
 )
 
 echo Installing dev dependencies...
-python -m pip install -e ".[dev]"
+.venv\Scripts\python.exe -m pip install -e ".[dev]"
 if errorlevel 1 (
     echo ERROR: Failed to install dependencies.
     exit /b 1
