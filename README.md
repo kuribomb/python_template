@@ -5,8 +5,7 @@
 ## 構成
 
 - Python 3.12
-- [Black](https://black.readthedocs.io/) — コードフォーマッター
-- [Ruff](https://docs.astral.sh/ruff/) — Linter / import整理
+- [Ruff](https://docs.astral.sh/ruff/) — Linter / Formatter / import整理
 - [Pylance](https://marketplace.visualstudio.com/items?itemName=ms-python.pylance) — 型チェック (standard)
 - [pytest](https://docs.pytest.org/) — テスト
 - src-layout (`src/myapp/`)
@@ -53,7 +52,7 @@ code .
 ruff check src/ tests/
 
 # Format
-black src/ tests/
+ruff format src/ tests/
 
 # Lint + import整理（自動修正）
 ruff check --fix src/ tests/
