@@ -7,14 +7,10 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["black", "ruff", "pytest", "pytest-qt"]
+dev = ["ruff", "pytest", "pytest-qt"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
-
-[tool.black]
-line-length = 88
-target-version = ["py312"]
 
 [tool.ruff]
 line-length = 88
