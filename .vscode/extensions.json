@@ -2,7 +2,6 @@
   "recommendations": [
     "ms-python.python",
     "ms-python.pylance",
-    "ms-python.black-formatter",
     "charliermarsh.ruff",
     "ms-python.debugpy",
     "njpwerner.autodocstring",
