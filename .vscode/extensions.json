@@ -2,7 +2,6 @@
   "recommendations": [
     "ms-python.python",
     "ms-python.pylance",
-    "ms-python.black-formatter",
     "charliermarsh.ruff",
     "ms-python.debugpy",
     "njpwerner.autodocstring",
@@ -11,9 +10,6 @@
     "eamodio.gitlens",
     "tamasfe.even-better-toml",
     "redhat.vscode-yaml",
-    "streetsidesoftware.code-spell-checker",
-    "svelte.svelte-vscode",
-    "esbenp.prettier-vscode",
-    "dbaeumer.vscode-eslint"
+    "streetsidesoftware.code-spell-checker"
   ]
 }

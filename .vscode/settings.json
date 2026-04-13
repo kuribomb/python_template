@@ -1,6 +1,6 @@
 {
   "[python]": {
-    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.defaultFormatter": "charliermarsh.ruff",
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
       "source.fixAll.ruff": "explicit",
@@ -12,13 +12,5 @@
   "python.analysis.autoImportCompletions": true,
   "python.defaultInterpreterPath": "${workspaceFolder}/.venv/Scripts/python.exe",
   "ruff.enable": true,
-  "ruff.lint.enable": true,
-  "[svelte]": {
-    "editor.defaultFormatter": "svelte.svelte-vscode",
-    "editor.formatOnSave": true
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
-  }
+  "ruff.lint.enable": true
 }

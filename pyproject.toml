@@ -8,14 +8,10 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["black", "ruff", "pytest", "httpx"]
+dev = ["ruff", "pytest", "httpx"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
-
-[tool.black]
-line-length = 88
-target-version = ["py312"]
 
 [tool.ruff]
 line-length = 88
