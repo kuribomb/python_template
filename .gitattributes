@@ -1,0 +1,2 @@
+# bat はcmd.exeが確実に解釈できるよう常にCRLFでチェックアウトする
+*.bat text eol=crlf

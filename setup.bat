@@ -1,8 +1,11 @@
 @echo off
+REM NOTE: Keep this file ASCII-only. cmd.exe reads .bat files in the OEM
+REM       codepage (CP932 on Japanese Windows), so UTF-8 text breaks execution.
 echo Setting up Python virtual environment...
 py -m venv .venv
 if errorlevel 1 (
     echo ERROR: Failed to create virtual environment. Is Python 3.12 installed?
+    pause
     exit /b 1
 )
 
@@ -18,6 +21,7 @@ echo Upgrading pip...
 .venv\Scripts\python.exe -m pip install --upgrade pip
 if errorlevel 1 (
     echo ERROR: Failed to upgrade pip.
+    pause
     exit /b 1
 )
 
@@ -25,6 +29,7 @@ echo Installing dev dependencies...
 .venv\Scripts\python.exe -m pip install -e ".[dev]"
 if errorlevel 1 (
     echo ERROR: Failed to install dependencies.
+    pause
     exit /b 1
 )
 
@@ -32,3 +37,4 @@ echo.
 echo Setup complete!
 echo To activate the venv in a new terminal, run:
 echo   .venv\Scripts\activate.bat
+pause
