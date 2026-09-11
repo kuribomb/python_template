@@ -7,12 +7,12 @@ dependencies = [
     "uvicorn[standard]>=0.30",
 ]
 
-[project.optional-dependencies]
+[dependency-groups]
 dev = ["ruff", "pytest", "httpx"]
 
 [build-system]
 requires = ["setuptools>=70"]
-build-backend = "setuptools.backends.legacy:build"
+build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
 where = ["src"]
