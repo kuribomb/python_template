@@ -7,7 +7,7 @@ Python プロジェクト用テンプレートリポジトリ。
 
 | ブランチ | 用途 | 主な技術 |
 |---|---|---|
-| [`python-base`](../../tree/python-base) | 汎用 Python ツール | Black, Ruff, Pytest |
+| [`python-base`](../../tree/python-base) | 汎用 Python ツール | uv, Ruff, Pytest |
 | [`python/fastapi`](../../tree/python/fastapi) | Web API | FastAPI, uvicorn, httpx |
 | [`python/svelte`](../../tree/python/svelte) | フルスタック Web | FastAPI + SvelteKit |
 | [`python/pyside6`](../../tree/python/pyside6) | デスクトップアプリ | PySide6, pytest-qt |
