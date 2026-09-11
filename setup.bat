@@ -1,39 +1,36 @@
 @echo off
-echo Setting up Python virtual environment...
-py -m venv .venv
+REM NOTE: Keep this file ASCII-only. cmd.exe reads .bat files in the OEM
+REM       codepage (CP932 on Japanese Windows), so UTF-8 text breaks execution.
+where uv >nul 2>&1
 if errorlevel 1 (
-    echo ERROR: Failed to create virtual environment. Is Python 3.12 installed?
-    exit /b 1
+    echo Installing uv...
+    powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+    if errorlevel 1 (
+        echo ERROR: Failed to install uv. See https://docs.astral.sh/uv/getting-started/installation/
+        exit /b 1
+    )
 )
-
-echo Activating virtual environment...
-call .venv\Scripts\activate.bat
 
 REM --- PROXY settings (uncomment and edit if you are behind a proxy) ---
 REM set HTTP_PROXY=http://proxy.example.com:8080
 REM set HTTPS_PROXY=http://proxy.example.com:8080
 REM set NO_PROXY=localhost,127.0.0.1
 
-echo Upgrading pip...
-.venv\Scripts\python.exe -m pip install --upgrade pip
+echo Syncing virtual environment and dependencies with uv...
+uv sync
 if errorlevel 1 (
-    echo ERROR: Failed to upgrade pip.
-    exit /b 1
-)
-
-echo Installing dev dependencies...
-.venv\Scripts\python.exe -m pip install -e ".[dev]"
-if errorlevel 1 (
-    echo ERROR: Failed to install dependencies.
+    echo ERROR: Failed to sync dependencies.
     exit /b 1
 )
 
 echo.
 echo Setup complete!
-echo To activate the venv in a new terminal, run:
-echo   .venv\Scripts\activate.bat
+echo uv installs the pinned Python version automatically if it is missing.
 echo.
 echo To start the development server:
-echo   uvicorn myapp.main:app --reload
+echo   uv run uvicorn myapp.main:app --reload
 echo.
 echo API docs available at http://localhost:8000/docs
+echo.
+echo To activate the venv in a new terminal instead, run:
+echo   .venv\Scripts\activate.bat
