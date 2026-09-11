@@ -1,7 +1,7 @@
 .PHONY: backend frontend install-frontend
 
 backend:
-	uvicorn myapp.main:app --reload
+	uv run uvicorn myapp.main:app --reload
 
 frontend:
 	cd frontend && npm run dev

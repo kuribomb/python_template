@@ -12,8 +12,8 @@ FastAPI バックエンド + SvelteKit フロントエンドの構成テンプ�
 - [FastAPI](https://fastapi.tiangolo.com/) — Web フレームワーク
 - [uvicorn](https://www.uvicorn.org/) — ASGI サーバー
 - [httpx](https://www.python-httpx.org/) — テスト用 HTTP クライアント
-- [Black](https://black.readthedocs.io/) — コードフォーマッター
-- [Ruff](https://docs.astral.sh/ruff/) — Linter / import整理
+- [uv](https://docs.astral.sh/uv/) — パッケージ / 仮想環境管理
+- [Ruff](https://docs.astral.sh/ruff/) — Linter / Formatter / import整理
 - [pytest](https://docs.pytest.org/) — テスト
 - src-layout (`src/myapp/`)
 
@@ -56,9 +56,20 @@ git commit -m "Initial commit"
 setup.bat
 ```
 
-venv の作成と dev 依存のインストールを一括で行う。
+`uv sync` を実行し、venv の作成と dev 依存のインストールを一括で行う。
+uv が未インストールの場合は自動でインストールする。
+Python 3.12 が無い場合も uv が自動でダウンロードする（`.python-version` で指定）。
 
-### 3. venv を有効化（毎回）
+### 3. コマンドの実行
+
+venv を明示的に有効化しなくても `uv run` で直接実行できる。
+
+```bat
+uv run pytest
+uv run ruff check .
+```
+
+明示的に有効化する場合は以下。
 
 ```bat
 .venv\Scripts\activate.bat
@@ -83,23 +94,30 @@ code .
 
 ```bat
 rem バックエンド開発サーバー（ターミナル1）
-uvicorn myapp.main:app --reload
+uv run uvicorn myapp.main:app --reload
 
 rem フロントエンド開発サーバー（ターミナル2）
 cd frontend
 npm run dev
 
+rem 依存関係の同期（pyproject.toml変更後など）
+uv sync
+
+rem 依存パッケージの追加
+uv add <package>
+uv add --dev <package>
+
 rem Lint
-ruff check src/ tests/
+uv run ruff check src/ tests/
 
 rem Format
-black src/ tests/
+uv run ruff format src/ tests/
 
 rem Lint + import整理（自動修正）
-ruff check --fix src/ tests/
+uv run ruff check --fix src/ tests/
 
 rem テスト
-pytest tests/ -v
+uv run pytest tests/ -v
 ```
 
 バックエンド: `http://localhost:8000/docs`
